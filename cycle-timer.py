@@ -33,8 +33,9 @@ class StopwatchApp:
             self.start()
 
     def start(self):
+        self.reset()
         self.is_running = True
-        self.start_time = time.time() - self.elapsed_time
+        self.start_time = time.time()
         self.toggle_button.config(text="Stop")
 
     def stop(self):
@@ -44,9 +45,15 @@ class StopwatchApp:
             self.toggle_button.config(text="Start")
             self.log_time()
 
+    def reset(self):
+        self.elapsed_time = 0
+        self.start_time = None
+
     def update_time(self):
         if self.is_running:
             self.elapsed_time = time.time() - self.start_time
+        else:
+            self.elapsed_time = self.elapsed_time
 
         hours, rem = divmod(self.elapsed_time, 3600)
         minutes, rem = divmod(rem, 60)
