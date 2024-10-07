@@ -8,6 +8,8 @@ class StopwatchApp:
         self.master = master
         self.master.title("Stopwatch")
         self.master.geometry("300x150")
+        # This line makes the window stay on top
+        self.master.attributes('-topmost', True)
 
         self.is_running = False
         self.start_time = None
